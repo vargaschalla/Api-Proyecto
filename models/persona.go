@@ -9,10 +9,10 @@ type Person struct {
 	Nombre          string `json:"nombre"`
 	Paterno         string `json:"paterno"`
 	Materno         string `json:"materno"`
-	Usuario         string `json:"usuario"`
 	Email           string `json:"email"`
-	Password        string `json:"password"`
 	Edad            string `json:"edad"`
+	Celular         string `json:"celular"`
 	Fechanacimiento string `json:"fechanacimiento"`
 	DNI             string `json:"dni"`
+	Estado          string `json:"estado"`
 }

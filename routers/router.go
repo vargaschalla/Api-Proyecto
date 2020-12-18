@@ -25,6 +25,10 @@ func SetupRouter() *gin.Engine {
 		&models.Rol{},
 		&models.Sesiones{},
 		&models.Tareas{},
+		&models.Nivel{},
+		&models.Grado{},
+		&models.Alumno{},
+		&models.Docente{},
 	)
 
 	r := gin.Default()
@@ -71,6 +75,30 @@ func SetupRouter() *gin.Engine {
 		v1.GET("/tareas/:id", app.TareaGet)
 		v1.PUT("/tareas/:id", app.TareaUpdate)
 		v1.DELETE("/tareas/:id", app.TareaDelete)
+
+		v1.GET("/nivel", app.NivelIndex)
+		v1.POST("/nivel", authMiddleWare(), app.NivelCreate)
+		v1.GET("/nivel/:id", app.NivelGet)
+		v1.PUT("/nivel/:id", app.NivelUpdate)
+		v1.DELETE("/nivel/:id", app.NivelDelete)
+
+		v1.GET("/grado", app.GradoIndex)
+		v1.POST("/grado", authMiddleWare(), app.GradoCreate)
+		v1.GET("/grado/:id", app.GradoGet)
+		v1.PUT("/grado/:id", app.GradoUpdate)
+		v1.DELETE("/grado/:id", app.GradoDelete)
+
+		v1.GET("/alumno", app.AlumnoIndex)
+		v1.GET("/alumno/:id", app.AlumnoGETID)
+		v1.POST("/alumno", authMiddleWare(), app.AlumnoCreate)
+		v1.PUT("/alumno/:id", app.AlumnoUpdate)
+		v1.DELETE("/alumno/:id", app.AlumnoDelete)
+
+		v1.GET("/docente", app.DocenteIndex)
+		v1.GET("/docente/:id", app.DocenteGETID)
+		v1.POST("/docente", authMiddleWare(), app.DocenteCreate)
+		v1.PUT("/docente/:id", app.DocenteUpdate)
+		v1.DELETE("/docente/:id", app.DocenteDelete)
 	}
 
 	return r
