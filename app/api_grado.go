@@ -9,12 +9,13 @@ import (
 )
 
 func GradoIndex(c *gin.Context) {
-	var lis []models.Grado
-
 	db, _ := c.Get("db")
 
 	conn := db.(gorm.DB)
 
+	lis := []models.Grado{}
+	conn.Find(&lis)
+	conn.Preload("Nivel").Find(&lis)
 	conn.Find(&lis)
 	c.JSON(http.StatusOK, gin.H{
 		"msg": "thank you",
